@@ -44,11 +44,8 @@ public class UserController {
 
     @PostMapping("/insertUser")
     public String createUser(@RequestBody UsersModel usersModel){
-        UsersModel user = new UsersModel();
-        user.setUsername(usersModel.getUsername());
-        user.setPassword(usersModel.getPassword());
-        System.out.println("user "+user.getId()+" "+usersModel.getId()+" "+user.getUsername());
-        userService.saveUser(user);
+
+        userService.saveUser(usersModel);
         return "success";
     }
     /**

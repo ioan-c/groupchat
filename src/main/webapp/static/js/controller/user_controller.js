@@ -5,7 +5,7 @@
 angular.module('groupChat').controller('UserController', ['$scope', 'UserService',
     function($scope, UserService) {
     var self = this;
-    self.user={id:0,username:'',password:''};
+    self.user={id:0,username:'',email:'',phone:'',country:'',city:''};
     //self.users=;
 
     self.submit = submit;
@@ -42,6 +42,8 @@ angular.module('groupChat').controller('UserController', ['$scope', 'UserService
         //if(self.user.id===null){
             console.log('Saving New User', self.user);
             createUser(self.user);
+
+
       /*  }/*else{
             updateUser(self.user, self.user.id);
             console.log('User updated with id ', self.user.id);

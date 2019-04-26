@@ -36,6 +36,7 @@ angular.module('groupChat').factory('UserService', ['$http', '$q', function($htt
             .then(
                 function (response) {
                     deferred.resolve(response.data);
+                    fetchAllUsers();
                 },
                 function(errResponse){
                     console.error('Error while creating User');

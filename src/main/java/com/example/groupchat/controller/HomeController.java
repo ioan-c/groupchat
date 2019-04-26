@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-//test comit 2ascasda
-//    @RequestMapping("/")
-//    public String index() {
-//        return "Greetings from Spring Boot!";
-//    }
 
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
@@ -31,6 +26,12 @@ public class HomeController {
     public String signUp(Model model) {
 
         return "signUp";
+    }
+
+    @RequestMapping(value = {"/getUsers" }, method = RequestMethod.GET)
+    public String getUsers(Model model) {
+
+        return "getUsers";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
