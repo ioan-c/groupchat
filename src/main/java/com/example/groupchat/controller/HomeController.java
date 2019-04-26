@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-//test comit
+//test comit 2ascasda
 //    @RequestMapping("/")
 //    public String index() {
 //        return "Greetings from Spring Boot!";
