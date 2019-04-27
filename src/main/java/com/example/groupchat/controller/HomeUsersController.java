@@ -1,6 +1,8 @@
 package com.example.groupchat.controller;
 
 import com.example.groupchat.db.UsersModel;
+import com.example.groupchat.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -9,8 +11,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
+
 @Controller
-public class HomeController {
+public class HomeUsersController {
+
+    private final IUserService userService;
+    @Autowired
+    public HomeUsersController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
@@ -23,14 +33,15 @@ public class HomeController {
     }
 
     @RequestMapping(value = {"/signUp" }, method = RequestMethod.GET)
-    public String signUp(Model model) {
-
+    public String signUp(@ModelAttribute("user") UsersModel user, BindingResult result,
+                         Model model) {
+       // userService.saveUser(user);
         return "signUp";
     }
 
     @RequestMapping(value = {"/getUsers" }, method = RequestMethod.GET)
     public String getUsers(Model model) {
-
+        model.addAttribute("users", userService.findAll());
         return "getUsers";
     }
 
@@ -38,7 +49,7 @@ public class HomeController {
     public String submit(@ModelAttribute("user") UsersModel user,
                          BindingResult result, ModelMap model) {
 
-        model.addAttribute("username", user.getUsername());
+       /* model.addAttribute("username", user.getUsername());
         model.addAttribute("password", user.getPassword());
         model.addAttribute("email", user.getEmail());
         model.addAttribute("phone", user.getPhone());
@@ -46,7 +57,8 @@ public class HomeController {
         model.addAttribute("city", user.getCity());
 
         System.out.println("data received: "+ user.getUsername()+ " "+user.getPassword());
-
+*/
+       userService.saveUser(user);
 
         return "signUp";
     }

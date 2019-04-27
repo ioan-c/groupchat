@@ -1,62 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script src="<c:url value='/static/js/app.js' />"></script>
-<script src="<c:url value='/static/js/service/user_service.js' />"></script>
-<script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Register</title>
-    <style>
-        .username.ng-valid {
-            background-color: lightgreen;
-        }
-        .username.ng-dirty.ng-invalid-required {
-            background-color: red;
-        }
-        .username.ng-dirty.ng-invalid-minlength {
-            background-color: orange;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script>
+        $(document).ready(function() {
+            $( "button" ).click(function() {
+               //alert("hello");
+                $(this).parent().siblings().find("span.email").hide();
+                $(this).parent().siblings().find("span.username").hide();
+                $(this).parent().siblings().find("input.email").show();
+                $(this).parent().siblings().find("input.username").show();
+//                $("span.username").before( $(this) ).hide();
+//                $("input.username").before( $(this) ).show();
+            });
+        });
+    </script>
 </head>
 
-<body ng-app="groupChat" class="ng-cloak">
-<div class="generic-container" ng-controller="UserController as ctrl">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">List of Users </span></div>
-        <div class="tablecontainer">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th width="20%"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="u in ctrl.users">
-                    <td><span ng-bind="u.username"></span></td>
-                    <td><span ng-bind="u.email"></span></td>
-                    <td><span ng-bind="u.phone"></span></td>
-                    <td><span ng-bind="u.city"></span></td>
-                    <td><span ng-bind="u.country"></span></td>
-                    <%--                          <td><span ng-bind="u.password"></span></td>--%>
-                    <td>
-                        <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
+<body>
+<h2>Users List</h2>
+<table class="table table-hover">
+    <tr>
+        <td><strong>Username</strong></td>
+        <td><strong>Email</strong></td>
+    </tr>
+    <c:forEach items="${users}" var="user">
+        <tr>
+            <td><span class="username">${user.username}</span> <input type="text" class="username" value="${user.username}" style="display: none"/></td>
+            <td><span class="email">${user.email}</span> <input type="text" class="email" value="${user.email}" style="display: none"/></td>
+            <td class="edit"><button type="button" class="btn btn-success custom-width">Edit</button></td>
+        </tr>
+    </c:forEach>
+</table>
 
 </body>
 </html>

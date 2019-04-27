@@ -9,9 +9,7 @@
    <body>
       <h1>Welcome</h1>
       <h2>${message}</h2>
-
-
-
+      
       <a href="${pageContext.request.contextPath}/signUp">Sign up</a>
 
    </body>

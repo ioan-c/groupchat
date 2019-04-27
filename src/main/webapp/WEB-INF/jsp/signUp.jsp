@@ -1,123 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script src="<c:url value='/static/js/app.js' />"></script>
-<script src="<c:url value='/static/js/service/user_service.js' />"></script>
-<script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Register</title>
-    <style>
-      .username.ng-valid {
-          background-color: lightgreen;
-      }
-      .username.ng-dirty.ng-invalid-required {
-          background-color: red;
-      }
-      .username.ng-dirty.ng-invalid-minlength {
-          background-color: orange;
-      }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Spring5 MVC Hibernate Demo</title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            border-spacing: 0px;
+        }
+        table td {
+            border: 1px solid #565454;
+            padding: 20px;
+        }
     </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Input Form</h1>
+<form:form action="addUser" method="post" modelAttribute="user">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <form:input path="username" /> <br />
+                <%--<form:errors path="name" cssClass="error" />--%>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <form:input path="email" /> <br />
+                <%--<form:errors path="email" cssClass="error" />--%>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <form:input path="password" /> <br />
+                    <%--<form:errors path="email" cssClass="error" />--%>
+            </td>
+        </tr>
 
-  </head>
-
-  <body ng-app="groupChat" class="ng-cloak">
-      <div class="generic-container" ng-controller="UserController as ctrl">
-          <div class="panel panel-default">
-              <div class="panel-heading"><span class="lead">User Registration Form </span></div>
-              <div class="formcontainer" style="margin-left: 20px">
-                  <form ng-submit="ctrl.submit()" name="myForm">
-                      <input type="hidden" ng-model="ctrl.user.id" />
-                      <div class="row">
-                          <div>
-                              <label for="uname">Username</label>
-                              <div>
-                                  <input type="text" ng-model="ctrl.user.username" id="uname" placeholder="username" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                            <div>
-                                <label for="pass">Password</label>
-                                <div>
-                                    <input type="password" ng-model="ctrl.user.password" id="pass" placeholder="Password" required ng-minlength="6"/>
-                                    <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.pass.$error.required">This is a required field</span>
-                                        <span ng-show="myForm.pass.$error.minlength">Minimum length required is 6</span>
-                                        <span ng-show="myForm.pass.$invalid">This field is invalid </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                      <div class="row">
-                          <div>
-                              <label for="email">Email</label>
-                              <div>
-                                  <input type="text" ng-model="ctrl.user.email" id="email" placeholder="email" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div>
-                              <label for="phone">Phone</label>
-                              <div>
-                                  <input type="text" ng-model="ctrl.user.phone" id="phone" placeholder="phone" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div>
-                              <label for="country">Country</label>
-                              <div>
-                                  <input type="text" ng-model="ctrl.user.country" id="country" placeholder="country" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div>
-                              <label for="city">City</label>
-                              <div>
-                                  <input type="text" ng-model="ctrl.user.city" id="city" placeholder="city" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.uname.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
-                                      <span ng-show="myForm.uname.$invalid">This field is invalid </span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="form-actions floatRight">
-                              <input type="submit"  value="Add" ng-disabled="myForm.$invalid">
-                          </div>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
+        <tr>
+            <td colspan="2"><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form:form>
 
 
-  </body>
+</body>
 </html>
