@@ -8,5 +8,6 @@ public interface IUserService {
 
     UsersModel saveUser(UsersModel user);
     List<UsersModel> findAll();
+    void deleteUser(Long id);
 
 }

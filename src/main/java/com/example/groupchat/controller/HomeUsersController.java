@@ -49,20 +49,23 @@ public class HomeUsersController {
     public String submit(@ModelAttribute("user") UsersModel user,
                          BindingResult result, ModelMap model) {
 
-       /* model.addAttribute("username", user.getUsername());
-        model.addAttribute("password", user.getPassword());
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("phone", user.getPhone());
-        model.addAttribute("country", user.getCountry());
-        model.addAttribute("city", user.getCity());
-
-        System.out.println("data received: "+ user.getUsername()+ " "+user.getPassword());
-*/
        userService.saveUser(user);
 
-        return "signUp";
+       model.addAttribute("users", userService.findAll());
+
+        return "getUsers";
     }
 
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    public String deleteUser(@ModelAttribute("user") UsersModel user,
+                         BindingResult result, ModelMap model) {
+
+        userService.deleteUser(user.getId());
+
+        model.addAttribute("users", userService.findAll());
+
+        return "getUsers";
+    }
 
 }
 

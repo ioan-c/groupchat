@@ -12,7 +12,7 @@ public class UsersModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_ids")
     @SequenceGenerator(name="user_ids", sequenceName = "users_seq")
     @Column(name = "id_user")
-    private long id;
+    private Long id;
     @Column(name = "username", nullable = false)
     private String username;
     @Column(name = "password", nullable = false)
@@ -61,11 +61,11 @@ public class UsersModel {
     public UsersModel() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

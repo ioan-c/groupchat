@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.EntityManagerFactory;
 
 import java.util.List;
 
@@ -29,5 +30,11 @@ public class UserService implements IUserService{
     @Override
     public List<UsersModel> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    @Transactional(value = "transactionManager")
+    public void deleteUser(Long id) {
+        userRepository.deleteUser(id);
     }
 }
