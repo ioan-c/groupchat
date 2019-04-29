@@ -7,7 +7,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Register</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function() {
 
@@ -31,6 +34,22 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg">
+
+    <ul class="navbar-nav">
+        <li class="active">
+            <a href="getUsers" class="nav-link">Get Users</a>
+        </li>
+        <li class="nav-item">
+            <a href="signUp" class="nav-link">Sign Up</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="logout" class="nav-link">Log Out</a>
+        </li>
+    </ul>
+    </div>
+</nav>
 <h2>Users List</h2>
 <table class="table table-hover">
 
