@@ -34,25 +34,24 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
 
-    <ul class="navbar-nav">
-        <li class="active">
-            <a href="getUsers" class="nav-link">Get Users</a>
-        </li>
-        <li class="nav-item">
-            <a href="signUp" class="nav-link">Sign Up</a>
-        </li>
+        <ul class="navbar-nav">
+            <li class="active">
+                <a href="getUsers" class="nav-link">Get Users</a>
+            </li>
+            <li class="nav-item">
+                <a href="signUp" class="nav-link">Sign Up</a>
+            </li>
 
-        <li class="nav-item">
-            <a href="logout" class="nav-link">Log Out</a>
-        </li>
-    </ul>
-    </div>
-</nav>
+            <li class="nav-item">
+                <a href="logout" class="nav-link">Log Out</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
 <h2>Users List</h2>
 <table class="table table-hover">
-
     <tr>
         <td><strong>Username</strong></td>
         <td><strong>Password</strong></td>
