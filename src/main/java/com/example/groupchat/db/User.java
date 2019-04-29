@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 //@EntityListeners(AuditingEntityListener.class)
-public class UsersModel {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_ids")
@@ -57,7 +57,7 @@ public class UsersModel {
         this.city = city;
     }
 
-    public UsersModel() {
+    public User() {
     }
 
     public Long getId() {

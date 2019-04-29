@@ -50,6 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/addUser").permitAll()
+                .antMatchers("/index").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/editUser").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/getUsers").access("hasRole('ROLE_ADMIN')")//.hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

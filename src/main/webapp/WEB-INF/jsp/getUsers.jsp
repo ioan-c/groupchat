@@ -51,20 +51,19 @@
         </ul>
         </div>
     </nav>
-<h2>Users List</h2>
+<h2 style="width: 100%">Users List</h2>
 <table class="table table-hover">
     <tr>
         <td><strong>Username</strong></td>
-        <td><strong>Password</strong></td>
         <td><strong>Email</strong></td>
         <td><strong>Phone</strong></td>
         <td><strong>Country</strong></td>
         <td><strong>City</strong></td>
+        <td></td>
     </tr>
     <c:forEach items="${users}" var="user"  varStatus="userCount">
-        <form id="form${userCount.index}" action="addUser" method="post" modelAttribute="user">
+        <form id="form${userCount.index}" action="editUser" method="post" modelAttribute="user">
             <input type="hidden" name="id" value="${user.id}"/>
-            <input type="hidden" name="password" value="${user.password}" />
             <tr>
                 <td>
                     <span>${user.username}</span>

@@ -1,6 +1,7 @@
 package com.example.groupchat.controller;
 
-import com.example.groupchat.db.UsersModel;
+import com.example.groupchat.db.User;
+import com.example.groupchat.repositories.IUserRepository;
 import com.example.groupchat.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,14 @@ import com.example.groupchat.config.security.util.SecurityUtils;
 public class HomeUsersController {
 
     private final IUserService userService;
+    private IUserRepository userRepository;
 
     @Autowired
-    public HomeUsersController(IUserService userService) {
+    public HomeUsersController(IUserService userService, IUserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
+
 
     @RequestMapping(value = { "/", "/login"}, method = RequestMethod.GET)
     public ModelAndView  login(Model model) {
@@ -38,7 +42,7 @@ public class HomeUsersController {
     }
 
     @RequestMapping(value = {"/signUp" }, method = RequestMethod.GET)
-    public String signUp(@ModelAttribute("user") UsersModel user, BindingResult result,
+    public String signUp(@ModelAttribute("user") User user, BindingResult result,
                          Model model) {
        // userService.saveUser(user);
         return "signUp";
@@ -46,18 +50,18 @@ public class HomeUsersController {
 
     @RequestMapping(value = {"/getUsers" }, method = RequestMethod.GET)
     public String getUsers(Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userRepository.findAll());
         return "getUsers";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("user") UsersModel user,
-                         BindingResult result, ModelMap model) {
+    public String addUser(@ModelAttribute("user") User user,
+                          BindingResult result, ModelMap model) {
         String returnString = "login";
         user.setPassword(userService.encodePassword(user.getPassword()));
-        userService.saveUser(user);
+        userRepository.save(user);
         if(SecurityUtils.isAuthenticated()){
-            model.addAttribute("users", userService.findAll());
+            model.addAttribute("users", userRepository.findAll());
             returnString = "getUsers";
         }
 
@@ -65,21 +69,35 @@ public class HomeUsersController {
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-    public String deleteUser(@ModelAttribute("user") UsersModel user,
+    public String deleteUser(@ModelAttribute("user") User user,
                          BindingResult result, ModelMap model) {
 
-        userService.deleteUser(user.getId());
+        userRepository.delete(user);
 
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userRepository.findAll());
 
         return "getUsers";
     }
 
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
-    public ModelAndView  logout(Model model) {
+    public ModelAndView logout(Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    public String editUser(@ModelAttribute("user") User user, ModelMap model) {
+        User oldUser = userRepository.findById(user.getId()).get();
+        oldUser.setUsername(user.getUsername());
+        oldUser.setCity(user.getCity());
+        oldUser.setCountry(user.getCountry());
+        oldUser.setPhone(user.getPhone());
+        oldUser.setEmail(user.getEmail());
+        userRepository.save(oldUser);
+        model.addAttribute("users", userRepository.findAll());
+        return "getUsers";
+    }
+
 }
 
