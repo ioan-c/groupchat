@@ -43,7 +43,6 @@
 
         });
 
-
     </script>
 </head>
 <body style="background-image: url(https://images.wallpaperscraft.com/image/apple_iphone_smartphone_bw_108546_2560x1440.jpg);">
