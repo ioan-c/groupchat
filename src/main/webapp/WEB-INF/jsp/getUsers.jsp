@@ -64,14 +64,11 @@
     <c:forEach items="${users}" var="user"  varStatus="userCount">
         <form id="form${userCount.index}" action="addUser" method="post" modelAttribute="user">
             <input type="hidden" name="id" value="${user.id}"/>
+            <input type="hidden" name="password" value="${user.password}" />
             <tr>
                 <td>
                     <span>${user.username}</span>
                     <input type="text" name="username" value="${user.username}" style="display: none"/>
-                </td>
-                <td>
-                    <span>${user.password}</span>
-                    <input type="text" name="password" value="${user.password}" style="display: none"/>
                 </td>
                 <td>
                     <span>${user.email}</span>

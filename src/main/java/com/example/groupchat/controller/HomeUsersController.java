@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.example.groupchat.config.security.util.SecurityUtils;
 
 @Controller
 public class HomeUsersController {
 
     private final IUserService userService;
+
     @Autowired
     public HomeUsersController(IUserService userService) {
         this.userService = userService;
@@ -51,13 +53,15 @@ public class HomeUsersController {
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String submit(@ModelAttribute("user") UsersModel user,
                          BindingResult result, ModelMap model) {
+        String returnString = "login";
+        user.setPassword(userService.encodePassword(user.getPassword()));
+        userService.saveUser(user);
+        if(SecurityUtils.isAuthenticated()){
+            model.addAttribute("users", userService.findAll());
+            returnString = "getUsers";
+        }
 
-       user.setPassword(userService.encodePassword(user.getPassword()));
-       userService.saveUser(user);
-
-       model.addAttribute("users", userService.findAll());
-
-        return "getUsers";
+        return returnString;
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
@@ -77,7 +81,5 @@ public class HomeUsersController {
         modelAndView.setViewName("login");
         return modelAndView;
     }
-
-
 }
 
