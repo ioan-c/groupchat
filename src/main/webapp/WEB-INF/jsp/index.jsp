@@ -14,6 +14,7 @@
          <li class="active">
             <a href="getUsers" class="nav-link">Get Users</a>
          </li>
+
          <li class="nav-item">
             <a href="signUp" class="nav-link">Sign Up</a>
          </li>

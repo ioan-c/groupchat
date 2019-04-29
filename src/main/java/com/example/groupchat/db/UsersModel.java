@@ -2,7 +2,6 @@ package com.example.groupchat.db;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "users")
 //@EntityListeners(AuditingEntityListener.class)

@@ -30,7 +30,6 @@
 
 <body>
 
-
 <div class="panel panel-primary" style="width: 14%; margin: auto; margin-top: 17%">
     <div class="panel-heading regr">
         <form action="signUp" id="regForm" method="get" class="form-signin">

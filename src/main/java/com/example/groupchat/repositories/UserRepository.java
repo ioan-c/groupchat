@@ -2,7 +2,6 @@ package com.example.groupchat.repositories;
 
 import com.example.groupchat.db.UsersModel;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package com.example.groupchat.repositories;
 
-
 import com.example.groupchat.db.UsersModel;
 
 import java.util.List;

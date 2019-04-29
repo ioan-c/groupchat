@@ -24,6 +24,7 @@
     </style>
 </head>
 <body>
+
 <h1>Input Form</h1>
 <form:form action="addUser" method="post" modelAttribute="user">
     <table class="table table-hover">

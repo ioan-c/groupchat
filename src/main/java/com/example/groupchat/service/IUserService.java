@@ -1,7 +1,6 @@
 package com.example.groupchat.service;
 
 import com.example.groupchat.db.UsersModel;
-
 import java.util.List;
 
 public interface IUserService {
