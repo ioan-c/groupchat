@@ -1,0 +1,63 @@
+/*general*/
+body {
+    background-image: url(https://images.wallpaperscraft.com/image/apple_iphone_smartphone_bw_108546_2560x1440.jpg);
+}
+
+.hide {
+    display: none;
+}
+
+/*login-signup*/
+.back-panel {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 14%;
+    min-width: 300px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 9px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.form-log-reg {
+    margin: auto;
+    width: 90%;
+    text-align:center;
+}
+
+.form-input {
+    margin: auto;
+    width: 80%;
+}
+
+.form-button{
+    width: 40%;
+}
+
+
+/*getUsers*/
+.header {
+    text-align:center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.table-div {
+    width: 95%;
+    margin: auto;
+    min-width: 1200px;
+}
+
+.get-table {
+    width: 100%;
+    margin: auto;
+}
+
+.input-text {
+    width: 165px;
+}
