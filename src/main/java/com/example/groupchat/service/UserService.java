@@ -9,7 +9,7 @@ public class UserService implements IUserService
 {
     @Override
     public String encodePassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10); // Strength set as 16
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10); // Strength set as 10
         String encodedPassword = encoder.encode(password);
 
         return encodedPassword;
