@@ -1,5 +1,6 @@
 package app.groupchat.config.security;
 
+import app.groupchat.config.security.util.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -30,16 +31,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    @Autowired
+    private CustomAuthenticationProvider authProvider;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.
+
                 jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
 
                 .passwordEncoder(bCryptPasswordEncoder);
+        //auth.authenticationProvider(authProvider);
     }
 
     @Override

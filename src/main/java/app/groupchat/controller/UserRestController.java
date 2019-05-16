@@ -33,6 +33,11 @@ public class UserRestController {
         return userRepository.findAll();
     }
 
+    @PutMapping("/findUser")
+    public String findUser(@RequestBody User user){
+        return "success";
+    }
+
     @PostMapping("/insertUser")
     public String createUser(@RequestBody User user){
 

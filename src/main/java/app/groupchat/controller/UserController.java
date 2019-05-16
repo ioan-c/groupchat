@@ -2,6 +2,7 @@ package app.groupchat.controller;
 
 import app.groupchat.config.security.util.SecurityUtils;
 import app.groupchat.db.User;
+import app.groupchat.db.UserDAO;
 import app.groupchat.repositories.IUserRepository;
 import app.groupchat.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class UserController {
     public ModelAndView login(Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
+
+        UserDAO dao =  new UserDAO();
+        System.out.println(dao.findUser("test2"));
+
+
         return modelAndView;
     }
 
