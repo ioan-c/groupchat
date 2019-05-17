@@ -2,7 +2,6 @@ package app.groupchat.controller;
 
 import app.groupchat.config.security.util.SecurityUtils;
 import app.groupchat.db.User;
-import app.groupchat.db.UserDAO;
 import app.groupchat.repositories.IUserRepository;
 import app.groupchat.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     private final IUserService userService;
+
     private IUserRepository userRepository;
 
     @Autowired
@@ -33,8 +33,8 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
 
-        UserDAO dao =  new UserDAO();
-        System.out.println(dao.findUser("test2"));
+        System.out.println("elena has email : "+
+                userService.loadUser("elena").getEmail());
 
 
         return modelAndView;
@@ -50,7 +50,6 @@ public class UserController {
     @RequestMapping(value = {"/signUp" }, method = RequestMethod.GET)
     public String signUp(@ModelAttribute("user") User user, BindingResult result,
                          Model model) {
-       // userService.saveUser(user);
         return "signUp";
     }
 
