@@ -25,7 +25,11 @@ public class UserDAO implements IUserDAO{
         query.select(userRoot);
         query.where( usernameRestriction );
         Query q = entityManager.createQuery(query);
-        User result = (User) q.getResultList().get(0);
-        return result;
+        if (q.getResultList() == null || q.getResultList().isEmpty()) {
+            return null;
+        }else{
+            return (User) q.getResultList().get(0);
+        }
+
     }
 }

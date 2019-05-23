@@ -37,9 +37,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.
+        auth
+                .authenticationProvider(authProvider)
 
-                jdbcAuthentication()
+                .jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
@@ -54,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/findUser").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/addUser").permitAll()

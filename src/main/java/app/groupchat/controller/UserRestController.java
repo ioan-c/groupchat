@@ -33,9 +33,11 @@ public class UserRestController {
         return userRepository.findAll();
     }
 
-    @PutMapping("/findUser")
-    public String findUser(@RequestBody User user){
-        return "success";
+    @GetMapping("/findUser")
+    public boolean findUser(@RequestBody User user){
+        System.out.println("username "+user.getUsername());
+
+        return userService.loadUser(user.getUsername()) != null;
     }
 
     @PostMapping("/insertUser")
