@@ -26,6 +26,7 @@ public class RoomController {
     @RequestMapping(value = {"/rooms" }, method = RequestMethod.GET)
     public String getRooms(Model model) {
         model.addAttribute("rooms", roomRepository.findAll());
+        model.addAttribute("room", new Room());
         return "rooms";
     }
 
@@ -34,7 +35,8 @@ public class RoomController {
                           BindingResult result, ModelMap model) {
         String returnString = "room";
         roomRepository.save(room);
-        return "rooms";
+        model.addAttribute("room",room);
+        return "redirect:/rooms";
     }
 /*
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)

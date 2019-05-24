@@ -34,7 +34,7 @@
     </head>
     <body>
 
-    <%@ include file="/WEB-INF/jsp/navigation.jsp" %>
+    <%@ include file="./navigation.jsp" %>
         <h3 class="header">Users List</h3>
         <div class="shadow p-3 mb-5 bg-white rounded table-div">
             <table class="table table-borderles get-table">

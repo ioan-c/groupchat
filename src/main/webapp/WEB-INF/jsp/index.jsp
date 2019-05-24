@@ -15,7 +15,7 @@
    </head>
 
    <body>
-   <%@ include file="/WEB-INF/jsp/navigation.jsp" %>
+   <%@ include file="./navigation.jsp" %>
 
       <div id="username-page">
          <div class="username-page-container">
