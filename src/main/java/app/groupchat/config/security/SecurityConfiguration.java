@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth
-                .authenticationProvider(authProvider)
+             //   .authenticationProvider(authProvider)
 
                 .jdbcAuthentication()
                 .dataSource(dataSource)

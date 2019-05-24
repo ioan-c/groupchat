@@ -1,6 +1,7 @@
 package app.groupchat.controller;
 
 import app.groupchat.config.security.util.SecurityUtils;
+import app.groupchat.db.Room;
 import app.groupchat.db.User;
 import app.groupchat.repositories.IRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,45 +17,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RoomController {
     private IRoomRepository roomRepository;
-/*
+
     @Autowired
-    public UserController(IRoomRepository roomRepository) {
+    public RoomController(IRoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
 
-    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public ModelAndView index(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
+    @RequestMapping(value = {"/rooms" }, method = RequestMethod.GET)
+    public String getRooms(Model model) {
+        model.addAttribute("rooms", roomRepository.findAll());
+        return "rooms";
     }
 
-    @RequestMapping(value = {"/signUp" }, method = RequestMethod.GET)
-    public String signUp(@ModelAttribute("user") User user, BindingResult result,
-                         Model model) {
-        return "signUp";
-    }
-
-    @RequestMapping(value = {"/getUsers" }, method = RequestMethod.GET)
-    public String getUsers(Model model) {
-        model.addAttribute("users", roomRepository.findAll());
-        return "getUsers";
-    }
-
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("user") User user,
+    @RequestMapping(value = "/addRoom", method = RequestMethod.POST)
+    public String addRoom(@ModelAttribute("room") Room room,
                           BindingResult result, ModelMap model) {
-        String returnString = "login";
-        user.setPassword(userService.encodePassword(user.getPassword()));
-        roomRepository.save(user);
-        if(SecurityUtils.isAuthenticated()){
-            model.addAttribute("users", roomRepository.findAll());
-            returnString = "getUsers";
-        }
-
-        return returnString;
+        String returnString = "room";
+        roomRepository.save(room);
+        return "rooms";
     }
-
+/*
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
     public String deleteUser(@ModelAttribute("user") User user,
                              BindingResult result, ModelMap model) {
@@ -64,13 +46,6 @@ public class RoomController {
         model.addAttribute("users", roomRepository.findAll());
 
         return "getUsers";
-    }
-
-    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
-    public ModelAndView logout(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)

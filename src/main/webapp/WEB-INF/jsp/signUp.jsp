@@ -12,15 +12,15 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../../static/css/groupchat.css" rel="stylesheet" type="text/css">
 
-        <script>
-            $(document).ready(function() {
+<%--        <script>--%>
+<%--            $(document).ready(function() {--%>
 
-                $( ".logr" ).click(function() {
-                    $("#logForm").submit();
-                });
+<%--                $( ".logr" ).click(function() {--%>
+<%--                    $("#logForm").submit();--%>
+<%--                });--%>
 
-            });
-        </script>
+<%--            });--%>
+<%--        </script>--%>
 
     </head>
 

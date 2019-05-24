@@ -4,16 +4,15 @@
 
 
 <html>
-    <head>
-        <title>Get Users</title>
+<head>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="../../static/css/groupchat.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/chat.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../../static/css/groupchat.css" rel="stylesheet" type="text/css">
+
+    <title>Get Users</title>
         <script>
             $(document).ready(function() {
 
@@ -35,27 +34,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="getUsers">Get Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signUp">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
+    <%@ include file="/WEB-INF/jsp/navigation.jsp" %>
         <h3 class="header">Users List</h3>
         <div class="shadow p-3 mb-5 bg-white rounded table-div">
             <table class="table table-borderles get-table">
