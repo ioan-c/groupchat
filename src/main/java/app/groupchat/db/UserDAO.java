@@ -16,12 +16,12 @@ public class UserDAO implements IUserDAO{
     @PersistenceContext
     private EntityManager entityManager;
 
-    public User findUser(String username){
+    public User findUser(User user){
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery query = criteriaBuilder.createQuery();
         Root<User> userRoot = query.from( User.class );
         Predicate usernameRestriction =
-                criteriaBuilder.equal( userRoot.get( "username" ), username );
+                criteriaBuilder.equal( userRoot.get( "username" ), user.getUsername() );
         query.select(userRoot);
         query.where( usernameRestriction );
         Query q = entityManager.createQuery(query);

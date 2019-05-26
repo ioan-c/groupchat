@@ -4,5 +4,5 @@ import app.groupchat.db.User;
 
 public interface IUserService {
     String encodePassword(String password);
-    User loadUser(String username);
+    User loadUser(User user);
 }

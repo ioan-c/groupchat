@@ -2,5 +2,5 @@ package app.groupchat.db;
 
 public interface IUserDAO {
 
-    User findUser(String username);
+    User findUser(User user);
 }

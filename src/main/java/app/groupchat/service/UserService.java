@@ -2,8 +2,6 @@ package app.groupchat.service;
 
 import app.groupchat.db.IUserDAO;
 import app.groupchat.db.User;
-import app.groupchat.db.UserDAO;
-import app.groupchat.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +25,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User loadUser(String username) {
-       return userDao.findUser(username);
+    public User loadUser(User user) {
+       return userDao.findUser(user);
     }
 }

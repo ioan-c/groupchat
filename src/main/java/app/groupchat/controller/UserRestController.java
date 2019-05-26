@@ -4,6 +4,7 @@ import app.groupchat.db.User;
 import app.groupchat.repositories.IUserRepository;
 import app.groupchat.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,10 +35,15 @@ public class UserRestController {
     }
 
     @GetMapping("/findUser")
-    public boolean findUser(@RequestBody User user){
+    public User findUser(@RequestBody User user){
         System.out.println("username "+user.getUsername());
-
-        return userService.loadUser(user.getUsername()) != null;
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+        User dbUser =  userService.loadUser(user);
+        if (encoder.matches(user.getPassword(), dbUser.getPassword())){
+            return dbUser;
+        }else{
+            return new User();
+        }
     }
 
     @PostMapping("/insertUser")
