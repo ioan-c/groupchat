@@ -10,4 +10,11 @@ public class SecurityUtils {
         System.out.println("\nName of logged user = ["+currentPrincipalName+"]");
         return currentPrincipalName!="anonymousUser" && currentPrincipalName!=null ? true : false;
     }
+
+    public static String getAuthenticatedUsername(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        System.out.println("\nName of logged user = ["+currentPrincipalName+"]");
+        return currentPrincipalName!=null ? currentPrincipalName :"anonymousUser";
+    }
 }

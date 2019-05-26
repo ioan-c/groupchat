@@ -2,8 +2,8 @@ package app.groupchat.controller;
 
 import app.groupchat.config.security.util.SecurityUtils;
 import app.groupchat.db.User;
-import app.groupchat.repositories.IUserRepository;
-import app.groupchat.service.IUserService;
+import app.groupchat.db.repositories.IUserRepository;
+import app.groupchat.service.IGroupChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-    private final IUserService userService;
+    private final IGroupChatService groupChatService;
 
     private IUserRepository userRepository;
 
     @Autowired
-    public UserController(IUserService userService, IUserRepository userRepository) {
-        this.userService = userService;
+    public UserController(IGroupChatService groupChatService, IUserRepository userRepository) {
+        this.groupChatService = groupChatService;
         this.userRepository = userRepository;
     }
 
@@ -61,8 +61,9 @@ public class UserController {
     public String addUser(@ModelAttribute("user") User user,
                           BindingResult result, ModelMap model) {
         String returnString = "login";
-        user.setPassword(userService.encodePassword(user.getPassword()));
-        userRepository.save(user);
+        user.setPassword(groupChatService.encodePassword(user.getPassword()));
+        //userRepository.save(user);
+        groupChatService.insertUser(user);
         if(SecurityUtils.isAuthenticated()){
             model.addAttribute("users", userRepository.findAll());
             returnString = "getUsers";

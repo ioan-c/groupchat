@@ -69,6 +69,7 @@ body {
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
+    color: white;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -76,7 +77,7 @@ body {
     font-size: 1.2rem;
 }
 
-#sidebar-wrapper .list-group {
+#sidebar-wrapper .list-group .list-group-item{
     width: 15rem;
 }
 
@@ -88,17 +89,15 @@ body {
     margin-left: 0;
 }
 
-@media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
+#sidebar-wrapper {
+    margin-left: 0;
+}
 
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+}
 
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: -15rem;
-    }
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
 }

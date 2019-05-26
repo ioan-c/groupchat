@@ -1,8 +1,8 @@
 package app.groupchat.controller;
 
 import app.groupchat.db.User;
-import app.groupchat.repositories.IUserRepository;
-import app.groupchat.service.IUserService;
+import app.groupchat.db.repositories.IUserRepository;
+import app.groupchat.service.IGroupChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping("/groupchat")
 public class UserRestController {
     private final IUserRepository userRepository;
-    private final IUserService userService;
+    private final IGroupChatService userService;
 
     @Autowired
-    public UserRestController(IUserService userService, IUserRepository userRepository) {
+    public UserRestController(IGroupChatService userService, IUserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
     }

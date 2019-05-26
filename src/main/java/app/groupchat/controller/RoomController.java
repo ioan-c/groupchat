@@ -1,9 +1,9 @@
 package app.groupchat.controller;
 
-import app.groupchat.config.security.util.SecurityUtils;
+import app.groupchat.db.Message;
 import app.groupchat.db.Room;
-import app.groupchat.db.User;
-import app.groupchat.repositories.IRoomRepository;
+import app.groupchat.db.repositories.IRoomRepository;
+import app.groupchat.service.IGroupChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,21 +12,24 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RoomController {
     private IRoomRepository roomRepository;
 
+    private final IGroupChatService groupChatService;
+
     @Autowired
-    public RoomController(IRoomRepository roomRepository) {
+    public RoomController(IRoomRepository roomRepository, IGroupChatService groupChatService) {
         this.roomRepository = roomRepository;
+        this.groupChatService = groupChatService;
     }
 
     @RequestMapping(value = {"/rooms" }, method = RequestMethod.GET)
     public String getRooms(Model model) {
         model.addAttribute("rooms", roomRepository.findAll());
         model.addAttribute("room", new Room());
+        model.addAttribute("message", new Message());
         return "rooms";
     }
 
@@ -34,7 +37,8 @@ public class RoomController {
     public String addRoom(@ModelAttribute("room") Room room,
                           BindingResult result, ModelMap model) {
         String returnString = "room";
-        roomRepository.save(room);
+        //roomRepository.save(room);
+        groupChatService.insertRoom(room);
         model.addAttribute("room",room);
         return "redirect:/rooms";
     }

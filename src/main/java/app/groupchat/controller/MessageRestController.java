@@ -1,7 +1,7 @@
 package app.groupchat.controller;
 
 import app.groupchat.db.Message;
-import app.groupchat.repositories.IMessageRepository;
+import app.groupchat.db.repositories.IMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

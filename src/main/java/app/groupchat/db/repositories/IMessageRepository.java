@@ -1,4 +1,4 @@
-package app.groupchat.repositories;
+package app.groupchat.db.repositories;
 
 import app.groupchat.db.Message;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,7 @@
 package app.groupchat.db;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -23,8 +24,12 @@ public class Message {
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "id_room", referencedColumnName = "id_room")
+    private Room room;
+
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
 
     public Long getMessageId() {
         return messageId;
@@ -50,11 +55,19 @@ public class Message {
         this.user = user;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
