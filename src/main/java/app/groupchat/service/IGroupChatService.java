@@ -4,6 +4,8 @@ import app.groupchat.db.Message;
 import app.groupchat.db.Room;
 import app.groupchat.db.User;
 
+import java.util.List;
+
 public interface IGroupChatService {
     String encodePassword(String password);
     User loadUser(User user);

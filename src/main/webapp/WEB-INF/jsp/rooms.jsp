@@ -19,14 +19,7 @@
                        $( "#btn_send" ).click(function() {
                            var roomId = window.location.search.split("=")[1];
                            var rId= $("#hiddenRoomId").attr('value', roomId);
-                           alert(rId);
                        });
-
-                      /*  $("a").click(function() {
-                            var href = $(this).attr('href');
-
-                            $("#btn_send").attr('value', href);
-                        });*/
                 });
 
             </script>
@@ -50,9 +43,9 @@
                 </div>
                 <div id="page-content-wrapper" style="background-color: #c8c8c8">
                     <div class="container-fluid">
-                        <%--<c:forEach items="${messages}" var="message"  >
-                            <a href="#" id="${message.id}" class="list-group-item list-group-item-action bg-dark" style="color: white;">${message.content}</a>
-                        </c:forEach>--%>
+                        <c:forEach items="${messages}" var="message"  >
+                            <a href="#" id="${message.messageId}" class="list-group-item list-group-item-action bg-dark" style="color: white;">${message.user.username}: ${message.content}</a>
+                        </c:forEach>
             </div>
 <%--                    <form id="form${userCount.index}" action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">--%>
 <%--                        <input type="text" class="list-group-item list-group-item-action bg-light" name="content" value=""/>--%>

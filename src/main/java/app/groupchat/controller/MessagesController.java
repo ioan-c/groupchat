@@ -1,5 +1,6 @@
 package app.groupchat.controller;
 
+import app.groupchat.config.security.util.SecurityUtils;
 import app.groupchat.db.Message;
 import app.groupchat.db.Room;
 import app.groupchat.db.repositories.IMessageRepository;
@@ -28,8 +29,8 @@ public class MessagesController {
     public String addMessage(@ModelAttribute("message") Message message,
                           BindingResult result, ModelMap model) {
         System.out.println("message "+message.getContent()+ " , id "+message.getRoom().getId());
-      //  groupChatService.insertMessage(message);
+        groupChatService.insertMessage(message);
         model.addAttribute("message",message);
-        return "redirect:/rooms";
+        return "redirect:/rooms?id="+message.getRoom().getId();
     }
 }

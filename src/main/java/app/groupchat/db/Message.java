@@ -70,4 +70,14 @@ public class Message {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    public static Message from(Long id, String content, User user, Room room, Timestamp date){
+        Message message = new Message() ;
+        message.setMessageId(id);
+        message.setContent(content);
+        message.setUser(user);
+        message.setRoom(room);
+        message.setDate(date);
+        return message;
+    }
 }
