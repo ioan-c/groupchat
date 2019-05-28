@@ -62,6 +62,7 @@ body {
     width: 165px;
 }
 
+
 #sidebar-wrapper {
     min-height: 100vh;
     margin-left: -15rem;
@@ -78,7 +79,7 @@ body {
 }
 
 #sidebar-wrapper .list-group .list-group-item{
-    width: 15rem;
+    width: 12rem;
 }
 
 #page-content-wrapper {

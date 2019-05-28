@@ -44,7 +44,7 @@
                 <div id="page-content-wrapper" style="background-color: #c8c8c8">
                     <div class="container-fluid">
                         <c:forEach items="${messages}" var="message"  >
-                            <a href="#" id="${message.messageId}" class="list-group-item list-group-item-action bg-dark" style="color: white;">${message.user.username}: ${message.content}</a>
+                            <p id="${message.messageId}" class="list-group-item list-group-item-action bg-light" >${message.user.username}: ${message.content}</p>
                         </c:forEach>
             </div>
 <%--                    <form id="form${userCount.index}" action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">--%>
@@ -52,8 +52,12 @@
 <%--                    </form>--%>
             <form:form action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">
                 <form:hidden path="room.id" value="" id="hiddenRoomId"/>
-                <form:input path="content" class="list-group-item list-group-item-action bg-light" placeholder="Type message..."/><br/>
-                <button type="submit" id="btn_send" value="" class="btn btn-light custom-width form-button">Send</button>
+                <div class="d-inline">
+                        <form:input path="content" class="list-group-item list-group-item-action bg-light" placeholder="Type message..."/>
+                   </div>
+                    <div class="d-inline">
+                        <button type="submit" id="btn_send" value="" class="btn btn-light form-button">Send</button>
+                    </div>
             </form:form>
         </div>
 
