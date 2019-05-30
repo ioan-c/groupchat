@@ -1,6 +1,6 @@
 /*general*/
 body {
-    background-image: url(https://images.wallpaperscraft.com/image/apple_iphone_smartphone_bw_108546_2560x1440.jpg);
+    background-image: url(http://i2.wp.com/deadendthrills.com/imagestore/features/building-the-impossible/mirrors01.jpg);
 }
 
 .hide {
@@ -61,16 +61,22 @@ body {
 .input-text {
     width: 165px;
 }
-
+#footer {
+    clear: both;
+    position: absolute;
+    height: 40px;
+    bottom: 10px;
+}
 
 #sidebar-wrapper {
     min-height: 100vh;
+    min-width: 35vh;
     margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    color: white;
+    color: black;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -79,7 +85,7 @@ body {
 }
 
 #sidebar-wrapper .list-group .list-group-item{
-    width: 12rem;
+    width: 35vh;
 }
 
 #page-content-wrapper {

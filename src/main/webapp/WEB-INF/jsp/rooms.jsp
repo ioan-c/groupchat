@@ -29,41 +29,48 @@
         <body style="overflow-x: hidden;">
         <%@ include file="./navigation.jsp" %>
             <div class="d-flex" id="wrapper">
-                <div class="bg-dark border-right" id="sidebar-wrapper">
-                    <div class="sidebar-heading" style="color: white;">Rooms</div>
+                <div class="border-right" style="background-color: #e3f2fd;" id="sidebar-wrapper">
+                    <div class="sidebar-heading">Rooms</div>
                     <div class="list-group list-group-flush">
                         <c:forEach items="${rooms}" var="room"  >
-                            <a href="/rooms?id=${room.id}" class="list-group-item list-group-item-action bg-dark" style="color: white;">${room.name}</a>
+                            <a href="/rooms?id=${room.id}" class="list-group-item list-group-item-action" style="background-color: #e3f2fd;">${room.name}</a>
                         </c:forEach>
                         <form:form action="addRoom" method="post" modelAttribute="room" class="form-signin form-log-reg ">
-                            <form:input path="name" class="list-group-item list-group-item-action bg-light" placeholder="Room name"/><br/>
+                            <form:input path="name" class="list-group-item list-group-item-action bg-light" style="width: 31vh;" placeholder="Room name"/><br/>
                             <button type="submit" class="btn btn-light custom-width form-button">Create</button>
                         </form:form>
                     </div>
                 </div>
-                <div id="page-content-wrapper" style="background-color: #c8c8c8">
+             
+				
+				<div id="page-content-wrapper" style="background-color: #c8c8c8">
                     <div class="container-fluid">
                         <c:forEach items="${messages}" var="message"  >
                             <p id="${message.messageId}" class="list-group-item list-group-item-action bg-light" >${message.user.username}: ${message.content}</p>
                         </c:forEach>
-            </div>
+					</div>
 <%--                    <form id="form${userCount.index}" action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">--%>
 <%--                        <input type="text" class="list-group-item list-group-item-action bg-light" name="content" value=""/>--%>
 <%--                    </form>--%>
-            <form:form action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">
-                <form:hidden path="room.id" value="" id="hiddenRoomId"/>
-                <div class="d-inline">
-                        <form:input path="content" class="list-group-item list-group-item-action bg-light" placeholder="Type message..."/>
-                   </div>
-                    <div class="d-inline">
-                        <button type="submit" id="btn_send" value="" class="btn btn-light form-button">Send</button>
+   
+                    <div id="footer">
+                        <form:form action="addMessage" method="post" modelAttribute="message" class="form-signin form-log-reg ">
+                            <form:hidden path="room.id" value="" id="hiddenRoomId"/>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 80%">
+                                    <form:input path="content" class="list-group-item list-group-item-action bg-light" placeholder="Type message..."/>
+                                    </td>
+                                    <td style="width: 20%">
+                                    <button type="submit" id="btn_send" value="" class="btn btn-light form-button" style="min-width: 30px">Send</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form:form>
                     </div>
-            </form:form>
-        </div>
+				</div>
+			</div>
 
-
-
-    </div>
 
 </body>
 </html>
