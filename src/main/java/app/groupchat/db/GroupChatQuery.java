@@ -2,8 +2,8 @@ package app.groupchat.db;
 
 public class GroupChatQuery {
     public static final String INSERT_USER = "INSERT INTO public.users(\n" +
-                                            "id_user, password, username, email, phone, country, city)\n" +
-                                            "VALUES ((SELECT max(id_user)+1 FROM users), :password, :username, :email, :phone, :country, :city)";
+            "id_user, password, username, email, phone, country, city)\n" +
+            "VALUES ((SELECT COALESCE ( max(id_user),  0)+1 FROM users), :password, :username, :email, :phone, :country, :city)";
     public static final String INSERT_ROOM = "INSERT INTO public.rooms(\n" +
             "id_room, name)\n" +
             "VALUES ((SELECT COALESCE ( max(id_room),  0)+1 FROM rooms), :name)";
